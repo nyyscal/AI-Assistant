@@ -13,7 +13,7 @@ const Provider = ({children}:Readonly<{children:React.ReactNode}>) => {
     <ConvexProvider client={convex}>
       <AuthContext.Provider value={{user,setUser}}>
     <NextThemesProvider  attribute="class"
-    defaultTheme="light"
+    defaultTheme="dark"
     enableSystem
     disableTransitionOnChange><div>{children}</div>
     </NextThemesProvider>
