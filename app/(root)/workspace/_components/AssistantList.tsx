@@ -9,6 +9,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Assistant } from '../../ai-assistants/page'
 import Image from 'next/image'
 import { AssistantContext } from '@/context/AssistantContext'
+import { BlurFade } from '@/components/magicui/blur-fade'
 
 const AssistantList = () => {
   const {user} = useContext(AuthContext)
@@ -18,7 +19,7 @@ const AssistantList = () => {
   const [assistantList, setAssistantList] = useState<Assistant[]>([])
     useEffect(()=>{
       user && getUserAssistance()
-    },[user])
+    },[user && assistant==null])
     
     const getUserAssistance = async()=>{
       const result = await convex.query(api.userAiAssistants.getAllUserAssistants,{
@@ -35,7 +36,8 @@ const AssistantList = () => {
       <Input className='bg-white mt-3 font-sans' placeholder='Search...'/>
       <div className='mt-2'>
         {assistantList.map((assistant_,index)=>(
-          <div key={index} onClick={()=>setAssistant(assistant)} 
+          <BlurFade key={index} delay={0.25 } inView>
+          <div key={index} onClick={()=>setAssistant(assistant_)} 
           className={`p-2 flex gap-3 items-center hover:bg-gray-300 dark:hover:bg-[#28282B] cursor-pointer rounded-xl ${assistant_.id == assistant?.id && "bg-gray-300 dark:bg-gray-900"}`} >
             <Image src={assistant_.image} alt={assistant_.name} width={60} height={60} className='rounded-xl w-[60] h-[60] object-cover'/>
             <div className=''>
@@ -43,10 +45,11 @@ const AssistantList = () => {
               <h2 className='text-gray-600 dark:text-gray-300 text-sm'>{assistant_.title}</h2>
               </div>
           </div>
+        </BlurFade>
         ))}
       </div>
-      <div className='absolute flex item-center justify-start bottom-20 gap-2 dark:text-gray-300 w-[90%] p-2 hover:dark:bg-gray-800 rounded-xl cursor-pointer'>
-        <Image src={user?.picture} alt="user" width={45} height={35} className='rounded-full font-sans'/>
+      <div className='absolute flex item-center justify-start bottom-10 gap-2 dark:text-gray-300 w-[90%] p-2 hover:dark:bg-gray-800 rounded-xl cursor-pointer'>
+        {user && <Image src={user?.picture} alt="user" width={45} height={35} className='rounded-full font-sans'/>}
         <div>
         <h2 className='text-gray-200 font-sans dark:text-amber-300 font-semibold'>Er. {user?.name}</h2>
         <h2 className='font-sans text-xs text-amber-300'>{user?.orderId?"Pro Plan" :"Free Plan"}</h2>

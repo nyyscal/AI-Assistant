@@ -1,5 +1,7 @@
 import React from 'react'
 import AssistantList from './_components/AssistantList'
+import AssistantSettings from './_components/AssistantSettings'
+import ChatUi from './_components/ChatUi'
 
 const WorkSpace = () => {
   return (
@@ -10,10 +12,10 @@ const WorkSpace = () => {
             <AssistantList/>
           </div>
           <div className=' md:col-span-4 lg:col-span-3'>
-            CHAT UI
+           <ChatUi/>
           </div>
           <div className='hidden lg:block'>
-          SETTINGS
+          <AssistantSettings/>
           </div>
         </div>
     </div>

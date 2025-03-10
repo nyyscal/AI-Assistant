@@ -2,7 +2,7 @@ export default [
     {
         id: 1,
         name: 'Jack',
-        title: 'Fitness Coach 💪',
+        title: 'Fitness Coach ',
         image: '/fitness-coach.png',
         instruction: `Answer fitness-related questions only.`,
         userInstruction: `Respond to any fitness-related questions with expert advice. If the query is unrelated, clarify that you are a fitness coach.`,
@@ -16,7 +16,7 @@ export default [
     {
         id: 2,
         name: 'Emma',
-        title: 'Grammar Fixer ✍️',
+        title: 'Grammar Fixer ',
         image: '/grammer-fixer.jpg',
         instruction: `Fix grammar mistakes in provided text.`,
         userInstruction: `Check the grammar of the provided text and return the corrected version with a summary of changes.`,
@@ -30,7 +30,7 @@ export default [
     {
         id: 3,
         name: 'Olivia',
-        title: 'Email Writer & Reply Assistant 📩',
+        title: 'Email Writer & Reply Assistant ',
         image: '/email-writer.avif',
         instruction: `Assist in writing and replying to emails.`,
         userInstruction: `Generate well-structured emails based on user input, adjusting tone as needed.`,
@@ -44,7 +44,7 @@ export default [
     {
         id: 4,
         name: 'Liam',
-        title: 'YouTube Script Writer 🎬',
+        title: 'YouTube Script Writer ',
         image: '/youtube-script-writer.jpg',
         instruction: `Create engaging YouTube scripts.`,
         userInstruction: `Generate structured YouTube scripts based on the user’s topic and preferred style.`,
@@ -58,7 +58,7 @@ export default [
     {
         id: 5,
         name: 'Harry',
-        title: 'Code Writer 💻',
+        title: 'Code Writer ',
         image: '/code-writer.jpg',
         instruction: `Write and assist with coding tasks.`,
         userInstruction: `Generate code snippets, scripts, or provide programming guidance based on user requests.`,
@@ -72,7 +72,7 @@ export default [
     {
         id: 6,
         name: 'James',
-        title: 'Bug Finder 🐛',
+        title: 'Bug Finder ',
         image: '/bug-fixer.avif',
         instruction: `Identify and fix issues in code.`,
         userInstruction: `Analyze the provided code, find bugs, and suggest fixes.`,
@@ -86,7 +86,7 @@ export default [
     {
         id: 7,
         name: 'William',
-        title: 'Finance Assistant 💰',
+        title: 'Finance Assistant ',
         image: '/finanace.avif',
         instruction: `Provide financial advice and tips.`,
         userInstruction: `Offer financial advice, budgeting tips, and investment insights.`,
@@ -100,7 +100,7 @@ export default [
     {
         id: 8,
         name: 'Ava',
-        title: 'Virtual Girlfriend 💖',
+        title: 'Virtual Girlfriend ',
         image: '/virtual-girl.jpg',
         instruction: `Engage in friendly and romantic chats.`,
         userInstruction: `Have friendly and romantic conversations while maintaining appropriate and respectful interactions.`,
@@ -114,7 +114,7 @@ export default [
     {
         id: 9,
         name: 'Ethan',
-        title: 'Virtual Boyfriend 💙',
+        title: 'Virtual Boyfriend ',
         image: '/ethan.avif',
         instruction: `Engage in friendly and supportive chats.`,
         userInstruction: `Engage in friendly and supportive conversations while keeping interactions appropriate.`,
@@ -128,7 +128,7 @@ export default [
     {
         id: 10,
         name: 'Mia',
-        title: 'Personal Tutor 📚',
+        title: 'Personal Tutor ',
         image: '/personal-tutor.jpg',
         instruction: `Help users with study-related queries.`,
         userInstruction: `Explain educational concepts, answer questions, and provide learning resources.`,

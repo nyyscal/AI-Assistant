@@ -39,7 +39,7 @@ const Provider = ({children,}:Readonly<{children: React.ReactNode;}>) => {
   return (
     <div>
       <AssistantContext.Provider value={{assistant,setAssistant}}>
-      <Header/>
+      {/* <Header/> */}
       {children}
       </AssistantContext.Provider>
       </div>
