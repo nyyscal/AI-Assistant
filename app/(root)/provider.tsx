@@ -1,16 +1,18 @@
 "use client"
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from './_compnents/Header';
 import { GetAuthUserData } from '@/services/GlobalApi';
 import { useRouter } from 'next/navigation';
 import { useConvex } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import { AuthContext } from '@/context/AuthContext';
+import { AssistantContext } from '@/context/AssistantContext';
 //Client Side
 const Provider = ({children,}:Readonly<{children: React.ReactNode;}>) => {
   const router = useRouter()
   const {user,setUser} = useContext(AuthContext)
   const convex = useConvex()
+  const [assistant,setAssistant] = useState()
   useEffect(()=>{
     checkUserAuth()
   },[])
@@ -36,8 +38,10 @@ const Provider = ({children,}:Readonly<{children: React.ReactNode;}>) => {
   }
   return (
     <div>
+      <AssistantContext.Provider value={{assistant,setAssistant}}>
       <Header/>
       {children}
+      </AssistantContext.Provider>
       </div>
   )
 }
