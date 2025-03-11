@@ -11,7 +11,7 @@ const EmptyChatState = () => {
       <SparklesText className='text-2xl capitalize text-center' text='How can I assist you?'/>
       <div className='mt-7'>
         {assistant?.sampleQuestions.map((suggestion:string,index:number)=>(
-          <BlurFade delay={0.25*index}>
+          <BlurFade key={index} delay={0.25*index}>
           <div key={index}>
             <h2 className='p-4 text-lg border mt-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-900 cursor-pointer flex items-center justify-between gap-7' >{suggestion} <ChevronRight/></h2>
           </div>
