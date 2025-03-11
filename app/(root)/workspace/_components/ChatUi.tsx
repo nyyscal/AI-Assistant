@@ -8,6 +8,10 @@ import AiModelOptions from '@/services/AiModelOptions'
 import { AssistantContext } from '@/context/AssistantContext'
 import axios from 'axios'
 import Image from 'next/image'
+import { useMutation } from 'convex/react'
+import { api } from '@/convex/_generated/api'
+import { AuthContext } from '@/context/AuthContext'
+import { Assistant } from '../../ai-assistants/page'
 
 type MESSAGE ={
   role:string,
@@ -19,7 +23,8 @@ const ChatUi = () => {
   const [messages,setMessages] = useState<MESSAGE[]>([])
   const [loading,setLoading] = useState(false)
   const chatRef = useRef<any>(null)
-
+  const {user,setUser} = useContext(AuthContext)
+  const updateToken =  useMutation(api.users.updateToken)
   useEffect(()=>{
     if(chatRef.current){
       chatRef.current.scrollTop=chatRef.current.scrollHeight
@@ -54,8 +59,23 @@ const ChatUi = () => {
     // console.log(result.data)
     setMessages(prev=>prev.slice(0,-1))
     setMessages(prev=>[...prev,result.data])
-
+    updateUserToken(result.data?.content)
   }
+  const updateUserToken = async(res:String)=>{
+    const tokenCount = res.trim() ? res.trim().split(/\s+/).length :0
+    console.log(tokenCount)
+    //updateUserToken
+    const result = await updateToken({
+      credits: user?.credits-tokenCount,
+      uid: user?._id
+    })
+    setUser((prev:Assistant)=>({
+      ...prev,
+      credits:user?.credits-tokenCount,
+    }))
+    console.log(result)
+  }
+
   return (
     <div className='mt-20 p-6 relative h-[88vh]'>
       {messages?.length==0 &&<EmptyChatState/>}

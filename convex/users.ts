@@ -41,3 +41,16 @@ export const getUser = query({
     return user[0]
   }
 })
+
+export const updateToken = mutation({
+  args:{
+    credits:v.number(),
+    uid:v.id("users")
+  },
+  handler: async(ctx,args) =>{
+    const result = await ctx.db.patch(args.uid,{
+      credits:args.credits
+    })
+    return result
+  }
+})
