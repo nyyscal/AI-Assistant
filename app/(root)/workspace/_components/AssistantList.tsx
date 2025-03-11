@@ -49,8 +49,8 @@ const AssistantList = () => {
       <AddNewAssistant>
       <Button className='w-full font-sans mt-3 cursor-pointer'>+ Add New Assistant</Button>
       </AddNewAssistant>
-      <Input className='bg-white mt-3 font-sans' placeholder='Search...'/>
-      <div className='mt-2'>
+      {/* <Input className='bg-white text-black mt-3 font-sans' placeholder='Search...'/> */}
+      <div className='mt-4'>
         {assistantList.map((assistant_,index)=>(
           <BlurFade key={index} delay={0.25 } inView>
           <div key={index} onClick={()=>setAssistant(assistant_)} 

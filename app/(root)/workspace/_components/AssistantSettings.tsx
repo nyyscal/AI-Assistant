@@ -92,9 +92,9 @@ const AssistantSettings = () => {
     </BlurFade>
     <div className='absolute bottom-10  justify-end gap-5 right-5 flex'>
       <ConfirmationAlert onDelete={onDelete}>
-      <Button className='bg-red-500 cursor-pointer' variant="ghost" disabled={loading}><Trash/>Delete</Button>
+      <Button className=' cursor-pointer' variant="ghost" disabled={loading}><Trash/>Delete</Button>
       </ConfirmationAlert>
-      <Button className='bg-green-500 cursor-pointer' onClick={onSave} disabled={loading}>{loading ? <Loader className='animate-spin'/>:<Save/>}Save</Button>
+      <Button className=' cursor-pointer' onClick={onSave} disabled={loading}>{loading ? <Loader className='animate-spin'/>:<Save/>}Save</Button>
     </div>
     </div>
   )

@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import EmptyChatState from './EmptyChatState'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Loader, Loader2, Send } from 'lucide-react'
+import { Loader, Loader2, Send, SendIcon } from 'lucide-react'
 import AiModelOptions from '@/services/AiModelOptions'
 import { AssistantContext } from '@/context/AssistantContext'
 import axios from 'axios'
@@ -92,10 +92,10 @@ const ChatUi = () => {
           </div>
         ))}
       </div>
-     <div className='flex justify-between p-5 gap-5 absolute bottom-5 w-[92%]'>
-      <Input placeholder='Start Typing here...' onChange={(e)=>setInput(e.target.value)} onKeyPress={(e)=>
-        e.key=="Enter" && onSendMessage()} value={input} disabled={loading}/>
-      <Button disabled={loading} className='dark:bg-gray-800'><Send className='dark:bg-gray-800 text-white'/></Button>
+     <div className='flex justify-between p-5 gap-2 absolute bottom-5 w-[92%]'>
+      <Input placeholder='Start Typing here...' className='px-4 py-5 rounded-full' onChange={(e)=>setInput(e.target.value)} onKeyPress={(e)=>
+        e.key=="Enter" && onSendMessage()} value={input} disabled={loading || user?.credits<=0}/>
+      <Button disabled={loading|| user?.credits<=0} className='dark:bg-gray-800 px-4 py-5 rounded-xl cursor-pointer' onClick={()=>onSendMessage()}><SendIcon className='dark:bg-gray-800 text-white'/></Button>
      </div>
     </div>
   )
