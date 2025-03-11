@@ -12,11 +12,24 @@ import { AssistantContext } from '@/context/AssistantContext'
 import { BlurFade } from '@/components/magicui/blur-fade'
 import AddNewAssistant from './AddNewAssistant'
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { LogOut, LogOutIcon, User2 } from 'lucide-react'
+import Profile from './Profile'
+
+
 const AssistantList = () => {
   const {user} = useContext(AuthContext)
   const convex = useConvex()
   const router = useRouter()
   const {assistant,setAssistant}= useContext(AssistantContext)
+  const [openProfile,setProfileOpen] = useState(false)
   const [assistantList, setAssistantList] = useState<Assistant[]>([])
     useEffect(()=>{
       user && getUserAssistance()
@@ -51,13 +64,25 @@ const AssistantList = () => {
         </BlurFade>
         ))}
       </div>
-      <div className='absolute flex item-center justify-start bottom-10 gap-2 dark:text-gray-300 w-[90%] p-2 hover:dark:bg-gray-800 rounded-xl cursor-pointer'>
+     
+      <DropdownMenu >
+  <DropdownMenuTrigger asChild>
+     <div className='absolute flex item-center justify-start bottom-10 gap-2 dark:text-gray-300 w-[90%] p-2 hover:dark:bg-gray-800 rounded-xl cursor-pointer'>
         {user && <Image src={user?.picture} alt="user" width={45} height={35} className='rounded-full font-sans'/>}
         <div>
         <h2 className='text-gray-200 font-sans dark:text-amber-300 font-semibold'>Er. {user?.name}</h2>
         <h2 className='font-sans text-xs text-amber-300'>{user?.orderId?"Pro Plan" :"Free Plan"}</h2>
         </div>
       </div>
+      </DropdownMenuTrigger>
+  <DropdownMenuContent className='w-[200px]'>
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem onClick={()=>setProfileOpen(true)} className='cursor-pointer'><User2/> Profile</DropdownMenuItem>
+    <DropdownMenuItem className='cursor-pointer'><LogOut/>Logout</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+    <Profile openDialog={openProfile} setOpenDialog={setProfileOpen}/>
     </div>
   )
 }
