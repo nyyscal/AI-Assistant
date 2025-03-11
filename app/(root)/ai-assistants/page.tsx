@@ -18,7 +18,8 @@ export type Assistant={
   image:string,
   instruction:string,
   userInstruction:string,
-  sampleQuestions: string[]
+  sampleQuestions: string[],
+  aiModelId?:string,
 }
 
 const AIAssistant = () => {
